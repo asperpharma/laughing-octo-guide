@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Local env files
+.env
+dist
+dist-ssr
+*.local
+
+.understand
+.cursor
+.claudefesii
+Orgnized Products
+Supabase_files
+*.csv
+*.sql
+*.ipynb
+*.xlsx
+*.tsv
+*.crt
+*.docx
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# AI / tooling (do not track)
+.claude/
+.claudefesii/
+.snapshots/
