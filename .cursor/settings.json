@@ -1,0 +1,16 @@
+{
+  "plugins": {
+    "supabase": {
+      "enabled": true
+    },
+    "slack": {
+      "enabled": true
+    },
+    "figma": {
+      "enabled": true
+    },
+    "cursor-team-kit": {
+      "enabled": true
+    }
+  }
+}
