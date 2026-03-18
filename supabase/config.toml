@@ -1,0 +1,7 @@
+project_id = "qqceibvalkoytafynwoc"
+
+[functions.beauty-assistant]
+verify_jwt = false
+
+[functions.lab-tools]
+verify_jwt = false
