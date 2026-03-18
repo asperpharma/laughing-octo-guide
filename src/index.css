@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Asper Beauty Shop — "Medical Luxury" Design System
+   Theme: Ivory & Gold | "The Sanctuary of Science"
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Canvas: Soft Ivory (#F8F8FF) — no pure #FFF */
+    --background: 240 100% 99%;
+    --foreground: 20 6% 20%;
+
+    /* Card: Clean white on ivory */
+    --card: 240 100% 99.5%;
+    --card-foreground: 20 6% 20%;
+
+    --popover: 240 100% 99.5%;
+    --popover-foreground: 20 6% 20%;
+
+    /* Primary Action: Deep Maroon (#800020) */
+    --primary: 345 100% 25%;
+    --primary-foreground: 240 100% 99%;
+
+    /* Secondary: Soft ivory tint */
+    --secondary: 240 30% 96%;
+    --secondary-foreground: 345 100% 25%;
+
+    /* Muted: Soft warm grey */
+    --muted: 240 12% 90%;
+    --muted-foreground: 20 6% 35%;
+
+    /* Accent: Metallic Gold (#C5A028) */
+    --accent: 43 66% 46%;
+    --accent-foreground: 20 6% 20%;
+
+    /* Polite Error: Soft Terracotta */
+    --destructive: 15 60% 58%;
+    --destructive-foreground: 240 100% 99%;
+
+    /* Structure borders: subtle gold-tinted */
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 345 100% 25%;
+
+    --radius: 0.5rem;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+    --font-arabic: 'Tajawal', sans-serif;
+
+    /* Gold accent — Metallic Gold #C5A028 */
+    --gold: 43 66% 46%;
+    --gold-light: 43 55% 62%;
+    --gold-dark: 43 70% 36%;
+
+    /* Science Lab zone: faint maroon tint */
+    --lab-zone: 345 10% 97%;
+
+    --sidebar-background: 240 30% 96%;
+    --sidebar-foreground: 20 6% 20%;
+    --sidebar-primary: 345 100% 25%;
+    --sidebar-primary-foreground: 240 100% 99%;
+    --sidebar-accent: 43 66% 46%;
+    --sidebar-accent-foreground: 20 6% 20%;
+    --sidebar-border: 40 15% 88%;
+    --sidebar-ring: 345 100% 25%;
+  }
+
+  .dark {
+    --background: 345 10% 7%;
+    --foreground: 40 20% 94%;
+
+    --card: 345 8% 10%;
+    --card-foreground: 40 20% 94%;
+
+    --popover: 345 8% 10%;
+    --popover-foreground: 40 20% 94%;
+
+    --primary: 345 60% 40%;
+    --primary-foreground: 240 100% 99%;
+
+    --secondary: 345 8% 14%;
+    --secondary-foreground: 40 20% 94%;
+
+    --muted: 345 6% 14%;
+    --muted-foreground: 345 6% 65%;
+
+    --accent: 43 66% 46%;
+    --accent-foreground: 345 10% 7%;
+
+    --destructive: 15 50% 45%;
+    --destructive-foreground: 40 20% 94%;
+
+    --border: 345 6% 18%;
+    --input: 345 6% 18%;
+    --ring: 345 60% 40%;
+
+    --lab-zone: 345 15% 10%;
+
+    --sidebar-background: 345 10% 8%;
+    --sidebar-foreground: 40 20% 94%;
+    --sidebar-primary: 345 60% 40%;
+    --sidebar-primary-foreground: 240 100% 99%;
+    --sidebar-accent: 345 8% 14%;
+    --sidebar-accent-foreground: 40 20% 94%;
+    --sidebar-border: 345 6% 18%;
+    --sidebar-ring: 345 60% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* ─── Golden Focus Ring (Accessibility as Luxury) ─── */
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--gold) / 0.7), 0 0 12px hsl(var(--gold) / 0.2);
+  }
+  input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 3px hsl(var(--gold) / 0.6);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  /* ─── Micro-Texture: Premium Paper Grain ─── */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: multiply;
+  }
+
+  /* ─── Branded Scrollbar ─── */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--primary));
+    border-radius: 10px;
+    border: 2px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--primary) / 0.8);
+  }
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--background));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  /* RTL support — larger size + tighter spacing for Arabic elegance */
+  [dir="rtl"] body {
+    font-family: var(--font-arabic);
+    font-size: 1.1em;
+    letter-spacing: 0;
+  }
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+    font-family: var(--font-arabic);
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+  [dir="rtl"] p, [dir="rtl"] span, [dir="rtl"] a {
+    letter-spacing: 0;
+  }
+}
+
+@layer utilities {
+  .gold-border {
+    border-color: hsl(var(--gold));
+  }
+  .gold-text {
+    color: hsl(var(--gold));
+  }
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+  /* Warm colored shadow — "sitting in a warm room" */
+  .shadow-warm {
+    box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.08);
+  }
+  .shadow-warm-lg {
+    box-shadow: 0 8px 30px -6px hsl(var(--primary) / 0.12);
+  }
+}
+
+/* ─── Golden Thread Divider ─── */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--gold) / 0.15) 15%,
+    hsl(var(--gold) / 0.5) 50%,
+    hsl(var(--gold) / 0.15) 85%,
+    transparent 100%
+  );
+}
+
+/* ─── Glassmorphism Navigation ─── */
+.glass-nav {
+  background: hsl(var(--background) / 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--gold)),
+    hsl(var(--gold-light)),
+    hsl(var(--gold))
+  );
+  z-index: 100;
+  transition: width 0.1s linear;
+}
+
+/* ─── Science Lab Zone ─── */
+.lab-zone {
+  background-color: hsl(var(--lab-zone));
+}
+
+/* ─── Concierge Badge (floating button) ─── */
+.concierge-badge {
+  box-shadow:
+    0 0 0 1px hsl(var(--gold) / 0.5),
+    0 8px 24px -4px hsl(var(--primary) / 0.25);
+}
+
+/* ─── Product Card Gold Stitch Hover ─── */
+.product-card-hover {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.35s ease;
+}
+.product-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px hsl(var(--gold) / 0.2);
+}
+
+/* ─── Button Ripple Effect ─── */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, hsl(var(--primary-foreground) / 0.2) 10%, transparent 60%);
+  transform: scale(0);
+  opacity: 0;
+  transition: none;
+}
+.btn-ripple:active::after {
+  transform: scale(4);
+  opacity: 1;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+/* ─── Image Fade-In ─── */
+.img-fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.img-fade-in.loaded {
+  opacity: 1;
+}
+
+/* ─── Gold Seal Rotation ─── */
+.gold-seal-rotate {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gold-seal-rotate:hover {
+  transform: rotate(360deg);
+}
+
+/* ─── Commercial Tape Marquee ─── */
+.commercial-tape:hover .commercial-tape-track {
+  animation-play-state: paused;
+}
+.commercial-tape-track {
+  animation: marquee-scroll 35s linear infinite;
+}
+[dir="rtl"] .commercial-tape-track {
+  animation: marquee-scroll-rtl 35s linear infinite;
+}
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-scroll-rtl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+/* ─── Mobile Bottom Nav Spacing ─── */
+@media (max-width: 768px) {
+  .mobile-bottom-pad {
+    padding-bottom: 5rem;
+  }
+}
+
+/* ─── Day/Night Hero Modes ─── */
+.hero-morning {
+  /* Bright, sun-drenched feel */
+}
+.hero-afternoon {
+  /* Balanced, neutral */
+}
+.hero-evening {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--background)) 0%,
+    hsl(345 30% 97%) 50%,
+    hsl(var(--background)) 100%
+  );
+}
+
+/* ─── Incognito Mode ─── */
+body.incognito-mode .product-image-incognito {
+  filter: blur(12px) saturate(0.3);
+  transition: filter 0.3s ease;
+}
+body.incognito-mode .product-title-incognito {
+  filter: blur(4px);
+  user-select: none;
+  transition: filter 0.3s ease;
+}
