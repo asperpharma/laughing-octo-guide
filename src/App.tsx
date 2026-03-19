@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { useCartSync } from "@/hooks/useCartSync";
+import { usePageTracking } from "@/hooks/usePageTracking";
 import { verifyBrandDNA } from "@/lib/verifyBrandDNA";
 
 import Index from "./pages/Index";
@@ -57,6 +58,12 @@ function CartSyncProvider({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+// Tracks every client-side page navigation as a `page_view` concierge event.
+function PageTracker() {
+  usePageTracking();
+  return null;
+}
+
 // Clinical DNA verification: runs once on load to ensure brand tokens are active (see docs/LAUNCH_DAY_PROTOCOL.md)
 function useBrandDNAGuard() {
   useEffect(() => {
@@ -75,6 +82,7 @@ const App = () => {
             <Toaster />
             <Sonner position="top-center" />
             <BrowserRouter>
+              <PageTracker />
               <Suspense fallback={null}>
                 <BeautyAssistant />
                 <FloatingConciergeWidget />
